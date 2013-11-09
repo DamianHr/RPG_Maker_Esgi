@@ -27,6 +27,9 @@
     <link rel="stylesheet" href="<?php echo base_url()?>css/main.css">
 
     <script src="<?php echo base_url()?>js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="<?php echo base_url()?>js/main.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="<?php echo base_url()?>js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
 </head>
 <body>
 <!--[if lt IE 7]>

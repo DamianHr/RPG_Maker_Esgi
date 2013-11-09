@@ -1,8 +1,8 @@
-<?php
-/**
- * Created by IntelliJ IDEA.
- * User: damian
- * Date: 11/8/13
- * Time: 3:27 PM
- * To change this template use File | Settings | File Templates.
- */
+<hr>
+<footer>
+    <p>&copy; Esgi 2013</p>
+</footer>
+
+<script src="<?php echo base_url()?>js/vendor/bootstrap.min.js"></script>
+</body>
+</html>

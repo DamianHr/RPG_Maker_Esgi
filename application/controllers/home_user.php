@@ -15,6 +15,8 @@ class Home_User extends CI_Controller {
 
         $data['title'] = 'Rpg Maker - Esgi';
 
+        $this->load->helper('url');
+
         $this->load->view('templates/header_user', $data);
         $this->load->view('pages/'.$page, $data);
         $this->load->view('templates/footer_user', $data);

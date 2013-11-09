@@ -1,15 +1,11 @@
-<h2>Create a Rpg game !</h2>
+<div class="container">
+    <h2>Create a Rpg game !</h2>
+    <form method="post" autocomplete="on" id="xml_wizard">
+        <input type="submit" name="submit" id="finalize-btn" value="Finalize" />
+    </form>
+</div>
 
-<?php echo validation_errors(); ?>
-
-<?php echo form_open('news/create') ?>
-
-	<label for="title">Title</label>
-	<input type="input" name="title" /><br />
-
-	<label for="text">Text</label>
-	<textarea name="text"></textarea><br />
-
-	<input type="submit" name="submit" value="Create news item" />
-
-</form>
+<script type="text/javascript">
+    var wizard = new XMLWizard();
+    wizard.create_xml_wizard("xml_wizard");
+</script>

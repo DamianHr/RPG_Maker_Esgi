@@ -15,9 +15,11 @@ class Rpg_Creation extends CI_Controller {
 
         $data['title'] = 'Rpg Creation';
 
-        $this->load->view('templates_user/header', $data);
+        $this->load->helper('url');
+
+        $this->load->view('templates/header_user', $data);
         $this->load->view('pages/'.$page, $data);
-        $this->load->view('templates_user/footer', $data);
+        $this->load->view('templates/footer_user', $data);
     }
 
 }

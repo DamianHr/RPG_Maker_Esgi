@@ -13,12 +13,11 @@ class Home_User extends CI_Controller {
             show_404();
 
         $this->load->model('user');
+        $this->load->helper('url');
 
         $this->authentify();
 
         $data['title'] = 'Rpg Maker - Esgi';
-
-        $this->load->helper('url');
 
         $this->load->view('templates/header_user', $data);
         $this->load->view('pages/'.$page, $data);
@@ -34,7 +33,7 @@ class Home_User extends CI_Controller {
     }
 
     public function check_form($login, $password) {
-        if(!isset($login) && !isset($password))
+        if(!isset($login) || !isset($password))
             redirect('/home');
 
         $this->verify_Ids($login, $password);
@@ -50,12 +49,13 @@ class Home_User extends CI_Controller {
     }
 
     public function verify_Ids($login, $password) {
-        //todo: appel de la vérification des identifiants via XML
+        if(!($login == "toto" && $password == "toto"))
+             redirect('/home/view', 'retryLogin');
+        $this->set_cookies($login, $password);
+    }
 
-        if(true)  {
-            var_dump('hello');
-            exit;
-        }
-        else redirect('/home/view');
+    public function set_cookies($login, $password) {
+        setcookie('rpg_login', $login, time()+60*60*24);
+        setcookie('rpg_pwd', $password, time()+60*60*24);
     }
 }

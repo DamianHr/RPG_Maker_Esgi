@@ -53,7 +53,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <form class="navbar-form navbar-right" action="index.php/home_user/authentify" method="post">
+            <form class="navbar-form navbar-right" action="index.php/home_user" method="post">
                 <div class="form-group">
                     <input type="text" name="login" placeholder="Email" class="form-control">
                 </div>

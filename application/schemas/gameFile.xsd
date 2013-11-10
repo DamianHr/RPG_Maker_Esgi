@@ -3,19 +3,38 @@
            xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
     <xs:element name="game" type="gameFileType">
+
+        <!-- Makes ids unique within their scope -->
+
+        <xs:unique name="situationKey">
+            <xs:selector xpath="./situation"/>
+            <xs:field xpath="@code"/>
+        </xs:unique>
+
+        <xs:unique name="answerKey">
+            <xs:selector xpath="./situation/question/answerpool/answer"/>
+            <xs:field xpath="@code"/>
+        </xs:unique>
+
+        <!--Force goTo to actually ref a situation-->
+        <xs:keyref name="childKeyRefId" refer="refedId">
+            <xs:selector xpath="./situation/question/answerpool/answer"/>
+            <xs:field xpath="@goTo"/>
+        </xs:keyref>
+        <xs:key name="situationId">
+            <xs:selector xpath="./situation"/>
+            <xs:field xpath="@code"/>
+        </xs:key>
     </xs:element>
+
     <xs:complexType name="gameFileType">
         <xs:sequence>
-            <xs:element type="situationType" name="situation" maxOccurs="unbounded" minOccurs="1">
-                <!--TODO check if that's in the right place or if it has to be set at a higher level or something-->
-                <xs:unique name="situationKey">
-                    <xs:selector xpath="."/>
-                    <xs:field xpath="@code"/>
-                </xs:unique>
-            </xs:element>
+            <xs:element type="situationType" name="situation" maxOccurs="unbounded" minOccurs="1"/>
         </xs:sequence>
         <xs:attribute type="xs:string" name="titre" use="required"/>
     </xs:complexType>
+
+
 
     <xs:complexType name="situationType">
         <xs:sequence>

@@ -10,6 +10,7 @@
             <xs:element name="userId" type="xs:long"/>
             <xs:element name="creationDate" type="xs:date"/>
             <!--todo copy/past game once finished, removing the meta and save part or link to the file on the server or something else (up to discussion)-->
+            <xs:element name="path" type="xs:string"/>
         </xs:sequence>
         <xs:attribute type="xs:string" name="titre" use="required"/>
     </xs:complexType>

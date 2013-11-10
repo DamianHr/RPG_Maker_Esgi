@@ -2,14 +2,21 @@
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
            xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-    <xs:element name="game" type="gameType">
+    <xs:element name="games">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="game" type="gameType" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
     </xs:element>
+
+
+
     <xs:complexType name="gameType">
         <xs:sequence>
             <xs:element name="id" type="xs:long"/>
             <xs:element name="userId" type="xs:long"/>
             <xs:element name="creationDate" type="xs:date"/>
-            <!--todo copy/past game once finished, removing the meta and save part or link to the file on the server or something else (up to discussion)-->
             <xs:element name="path" type="xs:string"/>
         </xs:sequence>
         <xs:attribute type="xs:string" name="titre" use="required"/>

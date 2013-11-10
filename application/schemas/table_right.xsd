@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="right">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="user" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="userId" type="xs:long"/>
+                            <xs:element name="author" type="xs:boolean" minOccurs="0"/>
+                            <xs:element name="admin" type="xs:boolean" minOccurs="0"/>
+                            <xs:element name="player" type="xs:boolean" minOccurs="0"/>
+                            <xs:element name="connection" type="xs:boolean" minOccurs="0"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+
+
+
+</xs:schema>

@@ -11,6 +11,9 @@ $route['(:any)'] = 'home/view/$1';
 $route['home_user'] = 'home_user/view';
 $route['home_user/(:any)'] = 'home_user/view/$1';
 
+$route['signout'] = 'sign_out/view';
+$route['signout/(:any)'] = 'sign_out/view/$1';
+
 $route['subscription'] = 'subscription/view';
 $route['subscription/(:any)'] = 'subscription/view/$1';
 

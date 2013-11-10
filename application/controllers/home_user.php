@@ -14,7 +14,6 @@ class Home_User extends CI_Controller {
 
         $this->load->model('user');
         $this->load->helper('url');
-
         $this->authentify();
 
         $data['title'] = 'Rpg Maker - Esgi';
@@ -25,8 +24,8 @@ class Home_User extends CI_Controller {
     }
 
     public function authentify() {
-        $login      = isset($_POST['login'])    ? $_POST['login']   : $_GET['l'];
-        $password   = isset($_POST['passwd'])   ? $_POST['passwd']  : $_GET['p'] ;
+        $login      = isset($_POST['login'])    ? $_POST['login']   : null;
+        $password   = isset($_POST['passwd'])   ? $_POST['passwd']  : null;
         if(isset($login) && isset($password))
             $this->check_form($login, $password);
         else $this->check_cookies();

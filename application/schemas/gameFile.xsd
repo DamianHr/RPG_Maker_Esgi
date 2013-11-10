@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="game" type="gameFileType">
+    </xs:element>
+    <xs:complexType name="gameFileType">
+        <xs:sequence>
+            <xs:element type="situationType" name="situation" maxOccurs="unbounded" minOccurs="1">
+                <!--TODO check if that's in the right place or if it has to be set at a higher level or something-->
+                <xs:unique name="situationKey">
+                    <xs:selector xpath="."/>
+                    <xs:field xpath="@code"/>
+                </xs:unique>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="titre" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="situationType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="exposition">
+            </xs:element>
+            <xs:element type="questionType" name="question" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute type="xs:integer" name="code" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="answerpoolType">
+        <xs:sequence>
+            <!--If only one answer is available there's no use to prompt the user...-->
+            <xs:element type="answerType" name="answer" maxOccurs="unbounded" minOccurs="2"/>
+                <!--TODO make answer@code unique within answerpools + use key/keyref to check if it goes somewhere !-->
+
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="authorType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="nickname"/>
+        </xs:sequence>
+        <xs:attribute type="xs:long" name="id" use="required"/>
+    </xs:complexType>
+
+
+    <xs:complexType name="answerType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="code" use="required"/>
+                <xs:attribute type="xs:string" name="value" use="required"/>
+                <xs:attribute type="xs:string" name="goTo" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="questionType">
+        <xs:sequence>
+            <xs:element type="answerpoolType" name="answerpool">
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="label" use="required"/>
+    </xs:complexType>
+</xs:schema>

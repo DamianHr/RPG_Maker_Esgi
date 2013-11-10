@@ -16,14 +16,14 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
-    <link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap.css">
     <style>
         body {
             padding-top: 50px;
             padding-bottom: 20px;
         }
     </style>
-    <link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap-theme.css">
     <link rel="stylesheet" href="<?php echo base_url()?>css/main.css">
 
     <script src="<?php echo base_url()?>js/vendor/modernizr-2.6.2.min.js"></script>
@@ -52,25 +52,13 @@
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-header">Nav header</li>
-                        <li><a href="#">Separated link</a></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
             </ul>
-            <form class="navbar-form navbar-right">
+            <form class="navbar-form navbar-right" action="index.php/home_user/authentify" method="post">
                 <div class="form-group">
-                    <input type="text" placeholder="Email" class="form-control">
+                    <input type="text" name="login" placeholder="Email" class="form-control">
                 </div>
                 <div class="form-group">
-                    <input type="password" placeholder="Password" class="form-control">
+                    <input type="password" name="passwd" placeholder="Password" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-success">Sign in</button>
             </form>

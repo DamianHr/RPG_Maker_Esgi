@@ -26,7 +26,7 @@ class Rpg_List extends CI_Controller {
         $data['title'] = 'Rpg Listing';
 
         $user_id = $this->session->userdata('id');
-        $data['games'] = GameXml::get_Game_By_User($user_id);
+        $data['games'] = GameXml::get_Game_By_User_with_meta($user_id);
 
         $this->load->view('templates/header_user', $data);
         $this->load->view('pages/'.$page, $data);

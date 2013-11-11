@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<!--Users database-->
+<saves xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../schemas/table_save.xsd">
+
+</saves>

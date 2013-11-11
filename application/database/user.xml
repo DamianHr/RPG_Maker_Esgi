@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<!--Users database-->
+<users xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../schemas/table_user.xsd">
+
+    <user>
+        <id>0</id>
+        <nickname>admin</nickname>
+        <passWord>0</passWord>
+        <creationDate>2013-11-01</creationDate>
+        <lastConnexion>2013-11-01</lastConnexion>
+        <email>admin@admin.fr</email>
+    </user>
+
+</users>

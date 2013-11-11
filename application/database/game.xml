@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!--Users database-->
+<games xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../schemas/table_game.xsd">
+
+    <game>
+        <id>0</id>
+        <userId>0</userId>
+        <creationDate>2013-07-01</creationDate>
+        <path>myFirstGame.xml</path>
+    </game>
+    <game>
+        <id>1</id>
+        <userId>0</userId>
+        <creationDate>2013-07-01</creationDate>
+        <path>mySecondGame.xml</path>
+    </game>
+
+</games>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<game xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="../../schemas/gameFile.xsd">
+
+    <title>my first game</title>
+    <situation code="0">
+        <exposition>Coucou</exposition>
+    </situation>
+
+
+</game>

@@ -47,7 +47,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="<?php echo site_url("home_user"); ?>">Home</a></li>
                 <?php if (IceBreaker::is_change_allowed(site_url("creater"))) { ?>
-                <li><a href="<?php if (!IceBreaker::is_change_allowed(site_url("creater"))) { echo site_url("create"); } ?>">Create a game</a></li>
+                <li><a href="<?php if (IceBreaker::is_change_allowed(site_url("creater"))) { echo site_url("create"); } ?>">Create a game</a></li>
                 <?php } ?>
                 <?php if (IceBreaker::is_change_allowed(site_url("list"))) { ?>
                     <li><a href="<?php if (IceBreaker::is_change_allowed(site_url("list"))) { echo site_url("list"); } ?>">Game list</a></li>

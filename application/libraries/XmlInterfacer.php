@@ -20,8 +20,6 @@ class UserXml
         $file->saveXML(self::userDb);
 
         RightXml::save_Rights($id, new SimpleXMLElement('<userRight><author>true</author><admin>false</admin><player>true</player><connection>true</connection></userRight>'));
-
-        return $file;
     }
 
     public static function get_User_By($id)
@@ -91,6 +89,45 @@ class GameXml
         }
 
         return $gameFiles;
+    }
+
+    public static function get_Game_By_User_with_meta($id){
+
+
+        $file = simplexml_load_file(self::gameDb);
+
+        $games = $file->xpath("/games/game[userId=$id]");
+
+        if (!$games)
+            return false;
+
+//        $gameFiles = array();
+        $list = new SimpleXMLElement('<games></games>');
+        foreach ($games as $game) {
+
+            $gameFile = simplexml_load_file(self::gameFilesDirectory . "/$game->path");
+            $author = UserXml::get_User_By($game->userId);
+
+            $answer = $list->addChild('game');
+
+            $meta =     $answer->addChild('meta');
+
+            $meta->addChild('id', $author->id);
+            $metaAuthor = $meta->addChild('author');
+            $metaAuthor->addChild('nickname', $author->nickname);
+            $metaAuthor->addChild('id', $author->id);
+
+            $meta->addChild('creationDate', $game->creationDate);
+
+//            $answer->addChild('game', $gameFile->asXML());
+            XMLUtils::xml_adopt($answer,$gameFile);
+
+//            var_dump($answer);
+//            exit;
+        }
+
+        return $list;
+
     }
 
 
@@ -243,5 +280,19 @@ class XmlInterfacer
         $answer->addChild('game', $game);
 
         return $answer;
+    }
+}
+
+
+
+class XMLUtils{
+    public static function xml_adopt($root, $new) {
+        $node = $root->addChild($new->getName(), (string) $new);
+        foreach($new->attributes() as $attr => $value) {
+            $node->addAttribute($attr, $value);
+        }
+        foreach($new->children() as $ch) {
+            self::xml_adopt($node, $ch);
+        }
     }
 }

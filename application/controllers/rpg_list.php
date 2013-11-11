@@ -13,7 +13,7 @@ class Rpg_List extends CI_Controller {
         if(!file_exists('application/views/pages/'.$page.'.php'))
             show_404();
 
-        $this->load->model();
+        //$this->load->model();
         $this->load->helper('url');
 
         $data['title'] = 'Rpg Listing';

@@ -28,6 +28,8 @@ class Subscription extends CI_Controller {
         $email = ($_POST['mail']);
         $login = ($_POST['login']);
         $password = ($_POST['login']);
+
+        $password = md5($password);
         //todo : Create the user, and redirect to home_user
         //User.createUser($email, $login, $password);
         //redirect(site_url("home_user"));

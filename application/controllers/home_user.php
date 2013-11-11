@@ -48,6 +48,7 @@ class Home_User extends CI_Controller {
     }
 
     public function verify_Ids($login, $password) {
+        //todo : hash the password before compare
         if(!($login == "toto" && $password == "toto"))
              redirect('/home/view', 'retryLogin');
         $this->set_cookies($login, $password);

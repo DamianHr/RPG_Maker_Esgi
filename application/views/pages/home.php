@@ -11,7 +11,9 @@
         </p>
     </div>
 </div>
-
+<div class="container">
+    <img height="250px" width="1200px" id="imageContainer" src="../img/banner.jpg" style="box-shadow: 0 0 10px 0 #656565; " />
+</div>
 <div class="container">
     <!-- Example row of columns -->
     <div class="row">

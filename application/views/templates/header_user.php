@@ -16,14 +16,14 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
-    <link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap.css">
     <style>
         body {
             padding-top: 50px;
             padding-bottom: 20px;
         }
     </style>
-    <link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap-theme.css">
     <link rel="stylesheet" href="<?php echo base_url()?>css/main.css">
 
     <script src="<?php echo base_url()?>js/vendor/modernizr-2.6.2.min.js"></script>

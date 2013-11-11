@@ -70,7 +70,6 @@ $route['rpg_creation/(:any)'] = 'rpg_creation/view/$1';
 $route['rpg_creation'] = 'rpg_creation/view';
 $route['rpg_creation/(:any)'] = 'rpg_creation/view/$1';
 
-$route['donotcommit'] = 'donotcommit/view';
 
 
 /* End of file routes.php */

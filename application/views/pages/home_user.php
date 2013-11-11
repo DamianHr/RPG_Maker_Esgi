@@ -1,6 +1,6 @@
 <div class="jumbotron">
     <div class="container">
-        <h1>Hello, User!</h1>
+        <h1>Hello, <?php echo $nickname ?>!</h1>
         <div style="background: #f5e79e; border-radius: 5px; padding: 20px; font-size: 15px; border:1px solid #d58512;margin:50px 50px 0">
             <p>
                 We're currently in Beta !

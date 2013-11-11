@@ -9,6 +9,11 @@
 
 class Rpg_Creation extends CI_Controller {
 
+    /**
+     * Main function
+     * Called be the router
+     * @param string $page
+     */
     public function view($page = 'rpg_creation') {
         if(!file_exists('application/views/pages/'.$page.'.php'))
             show_404();

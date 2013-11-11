@@ -2,17 +2,23 @@
 
 class Sign_Out extends CI_Controller {
 
+    /**
+     * Main function
+     * Called be the router
+     * @param string $page
+     */
     public function view($page = 'home') {
         if(!file_exists('application/views/pages/'.$page.'.php'))
             show_404();
 
+        $this->load->library('session');
         $this->load->helper('url');
         $this->signout();
         redirect(site_url("home"));
     }
 
     public function signout() {
-        setcookie('rpg_login', '', time()-3600);
-        setcookie('rpg_pwd', '', time()-3600);
+        $this->session->unset_userdata('nickname');
+        $this->session->unset_userdata('session_id');
     }
 }

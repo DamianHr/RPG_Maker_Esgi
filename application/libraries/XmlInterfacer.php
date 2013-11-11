@@ -8,20 +8,20 @@ class UserXml
     {
         $file = simplexml_load_file(self::userDb);
         $user = $file->addChild('user');
-
-        $id = date("YmdHis");
+        // todo: the login of the user must be unique, check it!
+        $id = time();
         $user->addChild('id', $id);
-        $user->addChild('email', $email);
-        $user->addChild('creationDate', date("Y-m-d"));
-        $user->addChild('passWord', $password);
         $user->addChild('nickname', $login);
-
+        $user->addChild('passWord', $password);
+        $user->addChild('creationDate', date("Y-m-d"));
+        $user->addChild('lastConnexion', date("Y-m-d"));
+        $user->addChild('email', $email);
 
         $file->saveXML(self::userDb);
 
         RightXml::save_Rights($id, new SimpleXMLElement('<userRight><author>true</author><admin>false</admin><player>true</player><connection>true</connection></userRight>'));
 
-        return $file;
+        return $user;
     }
 
     public static function get_User_By($id)

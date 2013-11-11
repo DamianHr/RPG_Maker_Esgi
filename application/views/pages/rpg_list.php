@@ -6,14 +6,7 @@
         .main_wrapper {
             font-size: 17px;
         }
-
-        #games_tab {
-
-        }
-
-        .situation {
-            list-style: ;
-        }
+        /* AJOUTER CSS ICI !!!! */
     </style>
     <div class="container main_wrapper">
         <?php
@@ -48,7 +41,7 @@
                         echo "<ul> <!-- Situation -->
                                 <li>
                                     <label>Situation ".$situation['code']."</label>
-                                    <table>
+                                    <table class=\"situation_table\">
                                         <tr> <!-- Exposition -->
                                             <td>Exposition :</td>
                                             <td>".$situation->exposition."</td>

@@ -3,11 +3,11 @@
         <h1>Hello, User!</h1>
         <div style="background: #f5e79e; border-radius: 5px; padding: 20px; font-size: 15px; border:1px solid #d58512;margin:50px 50px 0">
             <p>
-                The current version of the site in a Beta !
+                We're currently in Beta !
             </p>
             <p>
-                The technical team please do not be too bad if you find out any bugs or problems. :s<br />
-                We do our best to fix things as quickly and finalize the site.
+                Encounter a problem ? Don't go crazy and tell us about it ! <br />
+                We'll do our best fixing things as quickly as we can and finalize the darn thing soon ;).
             </p>
             <p>   The RPG Maker crew.</p>
         </div>
@@ -22,7 +22,7 @@
         <div class="col-lg-4">
             <h2>Create</h2>
 
-            <p>Lets start be creating your game !
+            <p>Where all thing begin, let's create YOUR game !
             </p>
             <p><a class="btn btn-primary btn-lg" href="<?php echo site_url("create");?>">Create &raquo;</a></p>
         </div>
@@ -35,7 +35,7 @@
         <div class="col-lg-4">
             <h2>Play</h2>
 
-            <p>Lets play the game that you have created !</p>
+            <p>Wanna play a little game ? Let's see what the community has for you !</p>
             <p><a class="btn btn-primary btn-lg" href="<?php echo site_url("home_user");?>">Play &raquo;</a></p>
         </div>
     </div>

@@ -15,7 +15,13 @@ class Subscription extends CI_Controller {
             show_404();
 
         //$this->load->model('user');
+        $this->load->library('XmlInterfacer');
+
         $this->load->helper('url');
+
+        if(isset($_POST['email'])){
+            $this->create_user();
+        }
 
         $data['title'] = 'Rpg Maker - Subscription';
 
@@ -25,13 +31,22 @@ class Subscription extends CI_Controller {
     }
 
     public function create_user() {
-        $email = ($_POST['mail']);
+        $email = ($_POST['email']);
         $login = ($_POST['login']);
-        $password = ($_POST['login']);
+        $password = ($_POST['passwd']);
 
         $password = md5($password);
-        //todo : Create the user, and redirect to home_user
+
+        UserXml::create_user($email,$login,$password);
+        $this->set_cookies($login,md5($password));
+        redirect(site_url("home_user"));
+
         //User.createUser($email, $login, $password);
         //redirect(site_url("home_user"));
+    }
+
+    public function set_cookies($login, $password) {
+        setcookie('rpg_login', $login, time()+60*60*24);
+        setcookie('rpg_pwd', $password, time()+60*60*24);
     }
 }

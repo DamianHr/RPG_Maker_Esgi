@@ -12,7 +12,7 @@
                             <xs:element type="xs:string" name="nickname"/>
                             <xs:element type="xs:string" name="name" minOccurs="0"/>
                             <xs:element type="xs:string" name="firstName" minOccurs="0"/>
-                            <xs:element name="passWord" type="xs:long"/>
+                            <xs:element name="passWord" type="xs:string"/>
                             <xs:element name="creationDate" type="xs:date"/>
                             <xs:element name="lastConnexion" type="xs:date"/>
                             <xs:element name="email">

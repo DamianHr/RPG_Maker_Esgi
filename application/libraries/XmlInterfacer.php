@@ -9,7 +9,8 @@ class UserXml
         $file = simplexml_load_file(self::userDb);
         $user = $file->addChild('user');
 
-        $user->addChild('id', $file->count());
+        $id = date("YmdHis");
+        $user->addChild('id', $id);
         $user->addChild('email', $email);
         $user->addChild('creationDate', date("Y-m-d"));
         $user->addChild('passWord', $password);
@@ -17,6 +18,10 @@ class UserXml
 
 
         $file->saveXML(self::userDb);
+
+        RightXml::save_Rights($id, new SimpleXMLElement('<userRight><author>true</author><admin>false</admin><player>true</player><connection>true</connection></userRight>'));
+
+        return $file;
     }
 
     public static function get_User_By($id)
@@ -70,6 +75,7 @@ class GameXml
 
     public static function get_Game_By_User($id)
     {
+        //TODO game with metas
         $file = simplexml_load_file(self::gameDb);
 
         $games = $file->xpath("/games/game[userId=$id]");

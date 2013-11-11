@@ -14,11 +14,14 @@ class Rpg_List extends CI_Controller {
             show_404();
 
         //$this->load->model();
+        $this->load->library('XmlInterfacer');
+
         $this->load->helper('url');
 
         $data['title'] = 'Rpg Listing';
 
-        $data['games'] =
+        //TODO : get the user's id
+        $data['games'] = GameXml::get_Game_By_User(0);
 
 
 

@@ -1,7 +1,7 @@
 <div class="jumbotron">
     <div class="container">
         <h2>Subscription :</h2>
-        <form method="post" autocomplete="off" id="subscription_form">
+        <form method="post" autocomplete="off" id="subscription_form" action="<?php echo site_url("subscription") ?>">
             <label for="email_input">Email :</label>
             <input type="email" name="email" id="email_input" required="This field is required" class="form-control" /><br />
             <label for="nickname_input">Login :</label>

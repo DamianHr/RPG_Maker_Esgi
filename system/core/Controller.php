@@ -32,6 +32,8 @@ class CI_Controller
 
     private static $instance;
 
+    public $myNameIs = '';
+
     /**
      * Constructor
      */
@@ -50,12 +52,81 @@ class CI_Controller
 
         $this->load->initialize();
 
+        $this->load->library('XmlInterfacer');
+        $this->load->library('AvailableUries');
+        $this->load->library('session');
+
         log_message('debug', "Controller Class Initialized");
     }
 
     public static function &get_instance()
     {
         return self::$instance;
+    }
+
+    public function _remap($method, $params = array()){
+
+        if($this->is_change_allowed($this->myNameIs)){
+//            $this->$method();
+//            $method = 'process_'.$method;
+            if (method_exists($this, $method))
+            {
+                return call_user_func_array(array($this, $method), $params);
+            }
+
+            $this->$method();
+
+        }
+        else
+        {
+            echo "You are not allowed to view this page, sorry :/";
+            exit;
+        }
+    }
+
+    public function is_change_allowed($uri = '')
+    {
+        /**
+         * @var SimpleXMLElement $usersRight
+         */
+
+        $user_id = $this->session->userdata('id');
+
+
+
+        if(false === $user_id)
+            return true;
+
+        $usersRight = RightXml::get_Right_For_User($user_id);
+
+//        creation
+        if($this->containsOneOf($uri,AvailableUries::new_, AvailableUries::create, AvailableUries::creation, AvailableUries::rpg_creation )){
+            return 'true'== (string)$usersRight->author ? true : false;
+        }
+
+//        rpg_list
+        if($this->containsOneOf($uri,AvailableUries::rpg_list, AvailableUries::list_, AvailableUries::rpg)){
+            return 'true' == (string)$usersRight->author ? true : false;
+        }
+
+        //The rest doesn't required right check so, gotta get there
+
+        return true;
+    }
+
+    private function containsOneOf(){
+        $i = 0;
+        $n = func_num_args();
+
+        $haystack = func_get_arg($i++);
+        for(;$i < $n; $i++){
+            $needle = func_get_arg($i);
+            if(false != strpos($haystack, $needle)){
+                return true;
+            }
+        }
+        return false;
+
     }
 }
 // END Controller class

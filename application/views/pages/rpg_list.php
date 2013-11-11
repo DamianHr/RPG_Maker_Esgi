@@ -2,6 +2,7 @@
     <div class="container">
         <h2>Your games :</h2>
     </div>
+
     <style type="text/css">
         .main_wrapper {
             font-size: 17px;

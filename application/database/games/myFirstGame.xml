@@ -17,4 +17,13 @@
             you're dead
         </exposition>
     </situation>
+    <situation code="2">
+        <exposition>You're in some place somewhere</exposition>
+        <question label="You don't look around, cause you're blind as fuck.">
+            <answerpool>
+                <answer code="3" value="0" goTo="0">You decide to stay here</answer>
+                <answer code="4" value="-1" goTo="1">You take one step ahead</answer>
+            </answerpool>
+        </question>
+    </situation>
 </game>

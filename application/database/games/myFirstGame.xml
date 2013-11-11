@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <game xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:noNamespaceSchemaLocation="../../schemas/gameFile.xsd">
+      xsi:noNamespaceSchemaLocation="../../schemas/gameFile.xsd">
 
     <title>my first game</title>
     <situation code="0">
@@ -13,6 +13,8 @@
         </question>
     </situation>
     <situation code="1">
-        <exposition>You bat-eyed basterd has make a bad decision, you happened to be on the edge of a cliff. Poor thing, you're dead</exposition>
+        <exposition>You bat-eyed basterd has make a bad decision, you happened to be on the edge of a cliff. Poor thing,
+            you're dead
+        </exposition>
     </situation>
 </game>

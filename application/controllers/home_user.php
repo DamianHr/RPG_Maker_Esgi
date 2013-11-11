@@ -8,57 +8,72 @@
  */
 class Home_User extends CI_Controller {
 
+    /**
+     * Main function
+     * Called be the router
+     * @param string $page
+     */
     public function view($page = 'home_user') {
         if(!file_exists('application/views/pages/'.$page.'.php'))
             show_404();
 
-//        $this->load->model('user');
         $this->load->library('XmlInterfacer');
+        $this->load->library('session');
 
         $this->load->helper('url');
-        $this->authentify();
+
+        $nickname = $this->session->userdata('nickname');
+        if(!$nickname)
+            $this->authentify();
 
         $data['title'] = 'Rpg Maker - Esgi';
+
+        $username = $this->session->userdata('nickname');
+        $data['nickname'] =  isset($username) ? $username : 'user';
 
         $this->load->view('templates/header_user', $data);
         $this->load->view('pages/'.$page, $data);
         $this->load->view('templates/footer_user', $data);
     }
 
+    /**
+     * Load the authentification process
+     * Redirect to the home page if the great parameters are not set
+     */
     public function authentify() {
         $login      = isset($_POST['login'])    ? $_POST['login']   : null;
         $password   = isset($_POST['passwd'])   ? $_POST['passwd']  : null;
-        if(isset($login) && isset($password))
-            $this->check_form($login, $password);
-        else $this->check_cookies();
-    }
-
-    public function check_form($login, $password) {
         if(!isset($login) || !isset($password))
             redirect('/home');
 
         $this->verify_Ids($login, $password);
     }
 
-    public function check_cookies() {
-        $login = $_COOKIE['rpg_login'];
-        $password = $_COOKIE['rpg_pwd'];
-        if(!isset($login) && !isset($password))
-             redirect('/home');
-
-        $this->verify_Ids($login, $password);
-    }
-
+    /**
+     * Compare the given ids to the ids saved in databas
+     * @param string $login
+     * @param string $password
+     */
     public function verify_Ids($login, $password) {
         $user = UserXml::get_user_by_login($login);
 
         if(!($user || ((string)md5($password)) == ((string)$user->passWord)))
              redirect('/home/view', 'retryLogin');
-        $this->set_cookies($login, $password);
+        $this->set_session($user);
     }
 
-    public function set_cookies($login, $password) {
-        setcookie('rpg_login', $login, time()+60*60*24);
-        setcookie('rpg_pwd', $password, time()+60*60*24);
+    /**
+     * Set the information about the user in the session
+     * @param SimpleXMLElement $user
+     */
+    public function set_session($user) {
+        $newdata = array(
+            'id'  => (string)$user->id,
+            'nickname'  => (string)$user->nickname,
+            'creationDate'  => (string)$user->creationDate,
+            'email'  => (string)$user->email,
+            'logged_in' => TRUE
+        );
+        $this->session->set_userdata($newdata);
     }
 }

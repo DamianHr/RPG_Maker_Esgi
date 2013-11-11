@@ -12,7 +12,9 @@ class Home_User extends CI_Controller {
         if(!file_exists('application/views/pages/'.$page.'.php'))
             show_404();
 
-        $this->load->model('user');
+//        $this->load->model('user');
+        $this->load->library('XmlInterfacer');
+
         $this->load->helper('url');
         $this->authentify();
 
@@ -48,8 +50,9 @@ class Home_User extends CI_Controller {
     }
 
     public function verify_Ids($login, $password) {
-        //todo : hash the password before compare
-        if(!($login == "toto" && $password == "toto"))
+        $user = UserXml::get_user_by_login($login);
+
+        if(!($user || ((string)md5($password)) == ((string)$user->passWord)))
              redirect('/home/view', 'retryLogin');
         $this->set_cookies($login, $password);
     }

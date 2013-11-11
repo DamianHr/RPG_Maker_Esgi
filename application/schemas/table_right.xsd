@@ -5,14 +5,14 @@
     <xs:element name="right">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="user" minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="userRight" minOccurs="0" maxOccurs="unbounded">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="id" type="xs:long"/>
-                            <xs:element name="author" type="xs:boolean" minOccurs="0"/>
-                            <xs:element name="admin" type="xs:boolean" minOccurs="0"/>
-                            <xs:element name="player" type="xs:boolean" minOccurs="0"/>
-                            <xs:element name="connection" type="xs:boolean" minOccurs="0"/>
+                            <xs:element name="author" type="xs:boolean"/>
+                            <xs:element name="admin" type="xs:boolean" />
+                            <xs:element name="player" type="xs:boolean" />
+                            <xs:element name="connection" type="xs:boolean"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>

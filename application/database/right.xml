@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<!--Users database-->
+<right xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../schemas/table_right.xsd">
+
+    <userRight>
+        <id>0</id>
+        <author>true</author>
+        <admin>false</admin>
+        <player>true</player>
+        <connection>true</connection>
+    </userRight>
+</right>

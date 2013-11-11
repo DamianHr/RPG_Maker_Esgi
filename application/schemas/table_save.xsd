@@ -6,7 +6,7 @@
         <xs:complexType>
             <xs:sequence>
                 <!-- id isn't really needed IMHO <xs:element name="id" type="xs:long"/> -->
-                <xs:element name="save">
+                <xs:element name="save" minOccurs="0" maxOccurs="unbounded">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="userId" type="xs:long"/>

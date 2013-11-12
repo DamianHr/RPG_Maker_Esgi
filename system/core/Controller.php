@@ -32,7 +32,11 @@ class CI_Controller
 
     private static $instance;
 
-    public $myNameIs = '';
+
+
+    function my_name_is() {
+        return get_class($this);
+    }
 
     /**
      * Constructor
@@ -66,7 +70,7 @@ class CI_Controller
 
     public function _remap($method, $params = array()){
 
-        if($this->is_change_allowed($this->myNameIs)){
+        if($this->is_change_allowed($this->my_name_is())){
 //            $this->$method();
 //            $method = 'process_'.$method;
             if (method_exists($this, $method))
@@ -84,7 +88,7 @@ class CI_Controller
         }
     }
 
-    public function is_change_allowed($uri = '')
+    public function is_change_allowed($uri)
     {
         /**
          * @var SimpleXMLElement $usersRight
@@ -119,12 +123,13 @@ class CI_Controller
         $i = 0;
         $n = func_num_args();
 
-        $haystack = func_get_arg($i++);
+        $haystack = strtolower(func_get_arg($i++));
         for(;$i < $n; $i++){
-            $needle = func_get_arg($i);
+            $needle = strtolower(func_get_arg($i));
             if($haystack == $needle || false != strpos($haystack, $needle)){
                 return true;
             }
+//            echo "$haystack --> $needle<br>";
         }
         return false;
 

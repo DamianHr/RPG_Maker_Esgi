@@ -36,24 +36,31 @@
 <div class="container">
     <!-- Example row of columns -->
     <div class="row" >
-        <div class="col-lg-4" style="<?php if (!$create) {echo 'display: none;';} ?>">
+
+        <?php if ($create) { ?>
+        <div class="col-lg-4">
             <h2>Create</h2>
 
             <p>Where all thing begin, let's create YOUR game !
             </p>
                 <p><a class="btn btn-primary btn-lg" href="<?php  echo site_url("create"); ?>" >Create &raquo;</a></p>
         </div>
-        <div class="col-lg-4" style="<?php if (!$list) {echo 'display: none;';} ?>">
+        <?php } ?>
+        <?php if ($list) { ?>
+            <div class="col-lg-4">
             <h2>Manage</h2>
 
             <p>See and manage the games that you have created !</p>
             <p><a class="btn btn-primary btn-lg" href="<?php echo site_url("list");  ?>">Manage &raquo;</a></p>
         </div>
-        <div class="col-lg-4" style="<?php if (!$home_user) {echo 'display: none;';} ?>">
+        <?php } ?>
+        <?php if ($home_user) { ?>
+            <div class="col-lg-4">
             <h2>Play</h2>
 
             <p>Wanna play a little game ? Let's see what the community has for you !</p>
             <p><a class="btn btn-primary btn-lg" href="<?php  echo site_url("home_user"); ?>">Play &raquo;</a></p>
         </div>
+        <?php } ?>
     </div>
 </div>

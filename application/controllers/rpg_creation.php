@@ -13,7 +13,6 @@ class Rpg_Creation extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-        $this->myNameIs = 'rpg_creation';
     }
 
 

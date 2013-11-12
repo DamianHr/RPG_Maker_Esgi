@@ -37,6 +37,5 @@ class Rpg_List extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-        $this->myNameIs = 'rpg_list';
     }
 }

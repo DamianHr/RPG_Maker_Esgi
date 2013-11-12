@@ -109,6 +109,7 @@ class CI_Controller
             return 'true' == (string)$usersRight->author ? true : false;
         }
 
+
         //The rest doesn't required right check so, gotta get there
 
         return true;
@@ -121,7 +122,7 @@ class CI_Controller
         $haystack = func_get_arg($i++);
         for(;$i < $n; $i++){
             $needle = func_get_arg($i);
-            if(false != strpos($haystack, $needle)){
+            if($haystack == $needle || false != strpos($haystack, $needle)){
                 return true;
             }
         }

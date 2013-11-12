@@ -39,6 +39,10 @@ class Home_User extends CI_Controller {
         $username = $this->session->userdata('nickname');
         $data['nickname'] =  isset($username) ? $username : 'user';
 
+        $data['create'] = $this->is_change_allowed("create");
+        $data['list'] = $this->is_change_allowed("list");
+        $data['home_user'] = $this->is_change_allowed("home_user");
+
         $this->load->view('templates/header_user', $data);
         $this->load->view('pages/'.$page, $data);
         $this->load->view('templates/footer_user', $data);

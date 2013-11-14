@@ -114,7 +114,7 @@ class GameXml
 
             $meta =     $answer->addChild('meta');
 
-            $meta->addChild('id', $author->id);
+            $meta->addChild('id', $game->id);
             $metaAuthor = $meta->addChild('author');
             $metaAuthor->addChild('nickname', $author->nickname);
             $metaAuthor->addChild('id', $author->id);

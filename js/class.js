@@ -27,20 +27,14 @@ function Situation(code, text) {
     this.code = code;
     this.text = text;
 
-    this.questions = [];
 }
 
-Situation.prototype.addQuestion = function (question) {
-    this.questions.push(question);
+Situation.prototype.setQuestion = function (question) {
+    this.question = question;
 };
 
-Situation.prototype.removeQuestionByRef = function (question) {
-    for (var i = 0; i < this.questions.length; ++i) {
-        if (question === this.questions[i]) {
-            this.questions.splice(i, 1);
-            return;
-        }
-    }
+Situation.prototype.removeQuestion = function () {
+    this.question = null;
 };
 
 

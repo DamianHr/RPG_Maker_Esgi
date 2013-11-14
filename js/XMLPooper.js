@@ -7,18 +7,32 @@ function XmlizeGame(game){
     var xmlDoc = document.implementation.createDocument ("", "game", null);
 
     var title = xmlDoc.createElement ("title");
+    title.appendChild(xmlDoc.createTextNode(game.title));
 
     xmlDoc.documentElement.appendChild (title);
 
     for(var i = 0; i < game.situations.length; ++i){
-        xmlDoc.appendChild(XmlizeSituation(game.situations[i], xmlDoc));
+        xmlDoc.documentElement.appendChild(XmlizeSituation(game.situations[i], xmlDoc));
     }
 
     return xmlDoc;
 
 }
 
-
+//function test(){
+//    var g = new Game("story one");
+//    var sit = new Situation("0","you're somewhere");
+//    var que = new Question("WHat ?");
+//    que.addAnswer(new Answer(0, 0,0, "Cause"));
+//    g.addSituation(sit);
+//    g.addSituation(sit);
+//    g.addSituation(sit);
+//    g.addSituation(sit);
+//    sit.setQuestion(que);
+//
+//    alert(XMLPooper(g));
+//
+//}
 
 function XmlizeSituation(situ, doc){
 
@@ -31,7 +45,7 @@ function XmlizeSituation(situ, doc){
     situation.appendChild(exposition);
 
     if(situ.question)
-        situation.appendChild(XmlizeQuestion(situation.question, doc));
+        situation.appendChild(XmlizeQuestion(situ.question, doc));
 
     return situation;
 }

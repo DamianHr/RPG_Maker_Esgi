@@ -52,7 +52,7 @@ function XmlizeQuestion(quest, doc){
 }
 function XmlizeAnswer(ans, doc){
     var answer = doc.createElement ("answer");
-    answer.setAttribute ("code" , ans.code);
+//    answer.setAttribute ("code" , ans.code);
     answer.setAttribute ("value" , ans.value);
     answer.setAttribute ("goto" , ans.goto);
 

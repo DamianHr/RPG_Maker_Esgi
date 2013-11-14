@@ -134,7 +134,7 @@ class GameXml
 
 
     /**
-     * @param SimpleXMLElement $xml_Game
+     * @param String $xml_Game
      */
     public static function create_game($author_Id, $xml_Game)
     {
@@ -151,7 +151,10 @@ class GameXml
 
         $file->saveXML(self::gameDb);
 
-        $gameFile = new SimpleXMLElement(self::gameFileHeader . $xml_Game->asXml());
+//        $gameFile = new SimpleXMLElement(self::gameFileHeader . $xml_Game->asXml());
+
+        $gameFile = simplexml_load_string(self::gameFileHeader.$xml_Game);
+
 
         $gameFile->saveXML(self::gameFilesDirectory . $name);
     }

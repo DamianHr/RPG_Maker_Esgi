@@ -5,7 +5,7 @@ function XMLWizard() {
     XMLWizard.prototype.create_xml_wizard = function (form_id) {
         XMLWizard.prototype.create_xml_wizard_group();
         XMLWizard.prototype.create_xml_wizard_add_button(form_id);
-    }
+    };
 
     XMLWizard.prototype.create_xml_wizard_group = function () {
         var title_game;
@@ -14,11 +14,12 @@ function XMLWizard() {
         /* Game's Title */
         if ($('.title_game').length == 0) {
             title_game = $('<label />',
-                {   id: 'title_game', class: 'title_game', text: 'Titre du jeu : ' }
+                {   id: 'title_game', class: 'title_game', text: 'Name of the game :  ' }
             ).insertBefore("#finalize-btn");
-            var title = $("<input/>",
+            $("<input/>",
                 {   type: 'text',
-                    placeholder: 'Titre du jeu',
+                    class:'title_game_input',
+                    placeholder: 'Your game\'s title',
                     name: 'title_game'  }
             ).insertAfter('.title_game');
         }
@@ -32,41 +33,50 @@ function XMLWizard() {
         var list_element = $('<li></li>');
         list_container.append(list_element);
 
+        var label_description_id = 'labeldesc_' + (situations.length + 1);
+        var description_id = 'desc_' + (situations.length + 1);
+
         /* Situations ( Actions ) */
         list_element.append($("<label>",
-            {   text: 'Action n°' + (situations.length + 1)   }
+            {   id: label_description_id,
+                text: 'Action n°' + (situations.length + 1)   }
         ));
+
+        // TODO faire la même chose en changeant cette fois le numéro des situation, question et réponses contenant le numéro de cette situation
+        list_element.append($("<img>",
+            {   click: function () {
+                list_element.remove();
+                situations.splice(situations.lastIndexOf(situation), 1);
+                //$('#list_element'+totalLength).remove();
+            },
+                width:'25px',
+                height:'25px',
+                src:"../img/trash.png",
+                class:'trash_icon'}
+        ));
+
         list_element.append($("<br />"));
         list_element.append($("<label />",
             {    text: 'Description :'}
         ));
         var description = $("<input/>",
-            {   id: 'desc' + (situations.length + 1),
+            {   id: description_id,
+                class:'description_input',
                 type: 'text',
                 placeholder: 'Description of the scene',
-                name: 'situation'  }
+                name: description_id
+            }
         );
         list_element.append(description);
 
         list_element.append($("<br />"));
 
         var questions = [];
-        XMLWizard.prototype.create_xml_wizard_add_question_button(('desc' + (situations.length + 1)), questions);
+        XMLWizard.prototype.create_xml_wizard_add_question_button(description_id, questions);
 
         var situation = new Situation(description, questions);
 
         situations.push(situation);
-
-        list_element.append($("<a>",
-            {   click: function () {
-                list_element.remove();
-                situations.splice(situations.lastIndexOf(situation), 1);
-                //$('#list_element'+totalLength).remove();
-            },
-                text:'Delete',
-                class: 'btn btn-danger'}
-        ));
-
     };
 
     XMLWizard.prototype.create_xml_wizard_add_button = function (form_id) {
@@ -74,10 +84,11 @@ function XMLWizard() {
         var div = $("<div/>", {   class: 'container' });
         var button = $("<a/>",
             {   click: function () {
-                XMLWizard.prototype.create_xml_wizard_group(form_id);
+                XMLWizard.prototype.create_xml_wizard_group();
             },
-                value: 'Ajouter une nouvelle action',
-                text: 'Ajouter une nouvelle action',
+                id: 'add_action_btn',
+                value: 'Add a action',
+                text: 'Add a action',
                 class: 'btn btn-success'}
         );
         div.append(button);
@@ -85,13 +96,13 @@ function XMLWizard() {
     };
 
     XMLWizard.prototype.create_xml_wizard_add_question_button = function (descriptionId, questions) {
-        var div = $("<div/>", {   class: 'button_question' });
+        var div = $("<div/>", {   id: 'button_question' + descriptionId, class:'bnt_question'});
         var button = $("<a/>",
             {   click: function () {
                 XMLWizard.prototype.create_xml_wizard_add_question(descriptionId, questions);
             },
-                value: 'Ajouter une nouvelle question',
-                text: 'Ajouter une nouvelle question',
+                value: 'Add a question',
+                text: 'Add a question',
                 class: 'btn btn-success'}
         );
         div.append(button);
@@ -100,51 +111,66 @@ function XMLWizard() {
 
     XMLWizard.prototype.create_xml_wizard_add_question = function (descriptionId, questions) {
         var questionNum = questions.length;
-        var list_question;
-        if ($(".list_question"+descriptionId).length == 0) {
-            list_question = $('<ul></ul>',
-                {   id: 'list_question' + descriptionId, class: 'list_question' + descriptionId }
-            ).insertAfter("#" + descriptionId);
-        } else list_question = $('.list_question' + descriptionId);
+        if (questionNum == 0) {
+            var list_question;
+            if ($('.list_question' + descriptionId).length == 0) {
+                list_question = $('<ul></ul>',
+                    {   id: 'list_question' + descriptionId, class: 'list_question' }
+                ).insertAfter("#" + descriptionId);
+            } else list_question = $('.list_question' + descriptionId);
 
-        var question = $('<li></li>');
-        list_question.append(question);
+            var question = $('<li></li>');
+            list_question.append(question);
 
-        question.append($("<label>",
-            {   text: 'Question n°' + (questionNum + 1)   }
-        ));
-        var question_id = descriptionId + 'quest' + (questionNum + 1);
-        var question_name = descriptionId + 'question' + (questionNum + 1);
-        var label_question = $("<input/>",
-            {   id: question_id,
-                type: 'text',
-                placeholder: 'Label of the question',
-                name: question_name  }
-        );
-        question.append(label_question);
+            var label_question_id = descriptionId + '_labelquest_' + (questionNum + 1);
+            var question_id = descriptionId + '_quest_' + (questionNum + 1);
 
-        var answers = [];
-        XMLWizard.prototype.create_xml_wizard_add_answer_button(question_id, answers);
+            question.append($("<label>",
+                {   id: label_question_id,
+                    text: 'Question n°' + (questionNum + 1)   }
+            ));
 
-        /* create 2 answer by default */
-        var list_answer = $('<ul></ul>',
-            {   id: 'list_answer' + question_id, class: 'list_answer' + question_id }
-        ).insertAfter("#" + question_id);
-        // add 2 question by default
-        XMLWizard.prototype.create_xml_wizard_add_answer(question_id, answers);
-        XMLWizard.prototype.create_xml_wizard_add_answer(question_id, answers);
+            question.append($("<img>",
+                    {   click: function () {
+                        question.remove();
+                        questions.splice(questions.lastIndexOf(question), 1);
+                        $('.list_question' + descriptionId).remove();
+                        if (questions.length == 0) {
+                            XMLWizard.prototype.create_xml_wizard_add_question_button(descriptionId, questions);
+                        }
+                        this.remove();
+                        //$('#list_element'+totalLength).remove();
+                    },
+                    width:'25px',
+                    height:'25px',
+                    src:"../img/trash.png",
+                    class:'trash_icon'}
+            ));
 
-        question.append($("<a>",
-            {   click: function () {
-                question.remove();
-                questions.splice(questions.lastIndexOf(question), 1);
-                //$('#list_element'+totalLength).remove();
-            },
-                text:'Delete question',
-                class: 'btn btn-danger'}
-        ));
+            var label_question = $("<input/>",
+                {   id: question_id,
+                    class:'question_input',
+                    type: 'text',
+                    placeholder: 'Label of the question',
+                    name: question_id  }
+            );
+            question.append(label_question);
 
-        questions.push(new Question(label_question, answers));
+            var answers = [];
+            XMLWizard.prototype.create_xml_wizard_add_answer_button(question_id, answers);
+
+            /* create 2 answer by default */
+            var list_answer = $('<ul></ul>',
+                {   id: 'list_answer' + question_id, class: 'list_answer' + question_id }
+            ).insertAfter("#" + question_id);
+            // add 2 question by default
+            XMLWizard.prototype.create_xml_wizard_add_answer(question_id, answers);
+            XMLWizard.prototype.create_xml_wizard_add_answer(question_id, answers);
+
+            $('.button_question' + descriptionId).remove();
+
+            questions.push(new Question(label_question, answers));
+        }
     };
 
     XMLWizard.prototype.create_xml_wizard_add_answer_button = function (questionId, answers) {
@@ -152,9 +178,12 @@ function XMLWizard() {
         var button = $("<a/>",
             {   click: function () {
                 XMLWizard.prototype.create_xml_wizard_add_answer(questionId, answers);
+                if (answers.length < 2) {
+                    XMLWizard.prototype.create_xml_wizard_add_answer(questionId, answers);
+                }
             },
-                value: 'Ajouter une nouvelle réponse',
-                text: 'Ajouter une nouvelle réponse',
+                value: 'Add a answer',
+                text: 'Add a answer',
                 class: 'btn btn-success'}
         );
         div.append(button);
@@ -166,47 +195,87 @@ function XMLWizard() {
         var answerNum = answers.length;
         var list_answer;
         list_answer = $('.list_answer' + questionId);
-
-        var answer = $('<li></li>');
+        var li_answer_id = questionId + '_liansw_' + (answerNum + 1);
+        var answer = $('<li></li>',
+            { id: li_answer_id});
         list_answer.append(answer);
 
-        var answer_id = questionId + 'answ' + (answerNum + 1);
-        var answer_name = questionId + 'answer' + (answerNum + 1);
+        var label_answer_id = questionId + '_labelansw_' + (answerNum + 1);
+        var answer_id = questionId + '_answ_' + (answerNum + 1);
+        var answer_point_id = questionId + '_answpoint_' + (answerNum + 1);
+        var answer_goto_id = questionId + '_answgoto_' + (answerNum + 1);
 
         // answer label
         answer.append($("<label>",
-            {   text: 'Réponse n°' + (answerNum + 1)   }
+            { id: label_answer_id,
+                text: 'Answer #' + (answerNum + 1)   }
         ));
+
+        answer.append($("<img>",
+            {   id: questionId + '_buttondelanswer_' + (answerNum+1),
+                click: function () {
+                    var splitted_id = this.id.split('_');
+                    var answerToDelIndex = splitted_id[splitted_id.length-1];
+                    $('#' + (questionId + '_liansw_' + (answerToDelIndex))).remove();
+                    //TODO supprimer dans le tableau answers le answer à l'index answerToDel je crois car problème lors de l'ajout sur index;
+
+                    answers.splice(answerToDelIndex, 1);
+                    for (var i = (answerToDelIndex+1); i <= answers.length; i++) {
+                        // TODO petit problème avec les id quand rajoute
+                        alert('to modify => #' + (questionId + '_liansw_' + (1 + i)));
+                        alert('by => ' + (questionId + '_liansw_' + (i)));
+                        // récup le <li> qui contient la réponse suivant celle qu'on supprime et lui remet un id-1
+                        $('#' + (questionId + '_liansw_' + (1 + i))).attr('id', (questionId + '_liansw_' + (i)));
+                        // récupère le bouton supprimer et lui change son id sinon, ça supprime le mauvais li avec un décalage
+                        $('#' + (questionId + '_buttondelanswer_' + (1+i))).attr('id', (questionId + '_buttondelanswer_' + (i)));
+                        // TODO récupérer les endroits où y a un id pour les réponses et les décaler de - 1 ( labelid, id, gotoid etc. )
+
+                        // TODO gérer le cas où il ne reste que 2 réponses => Message disant que ça va supprimer la question + les 2 réponses
+                    }
+                    this.remove();
+                },
+                width:'25px',
+                height:'25px',
+                src:"../img/trash.png",
+                class:'trash_icon'}
+        ));
+
         var label_answer = $("<input/>",
             {   id: answer_id,
+                class:'answer_input',
                 type: 'text',
                 placeholder: 'Label of the answer',
-                name: answer_name  }
+                name: answer_id  }
         );
         answer.append(label_answer);
 
         // answer's points
         answer.append($("<label>",
-            { text: 'Nombre de points' }
+            {
+                text: 'Points amount',
+                class:'points_label'
+            }
         ));
         var point_answer = $("<input/>",
-            {
+            {   id: answer_point_id,
+                class:'points_input',
                 type: 'number',
-                placeholder: 'point of the answer',
-                name: 'answerPoint' + answerNum  }
+                name: answer_point_id  }
         );
         answer.append(point_answer);
 
         // relation goTo situation
-        // answer's points
         answer.append($("<label>",
-            { text: 'Numéro de la prochaine situation' }
+            {
+                text: 'Number of the next situation',
+                class:'number_next_label'
+            }
         ));
         var code_goto_answer = $("<input/>",
-            {
+            {   id: answer_goto_id,
+                class:'number_next_input',
                 type: 'number',
-                placeholder: 'goTo of the answer',
-                name: 'answerGoTo' + answerNum  }
+                name: answer_goto_id  }
         );
         answer.append(code_goto_answer);
 
@@ -230,8 +299,3 @@ function Situation(description, questions) {
     this.description = description;
     this.questions = questions;
 }
-
-//function Situation(description, question) {
-//    this.description = description;
-//    this.question = question;
-//}

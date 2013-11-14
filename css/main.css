@@ -4,6 +4,57 @@
    Author's custom styles
    ========================================================================== */
 
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+#list_container {
+    border: 2px solid #cccccc;
+}
+#list_container li {
+    padding: 10px;
+}
+#list_container > li:nth-child(odd) {
+    background-color: #e0e0e0;
+}
+#list_question li, #list_container > li:nth-child(even) {
+    background-color:#fff;
+}
+.title_game {
+    font-size: 20px;
+}
+.title_game_input {
+    margin-left: 5px;
+    width: 250px;
+}
+.description_input, .question_input, .answer_input {
+    width: 100%;
+}
+.bnt_question {
+    padding-top: 10px;
+}
+.points_label, .number_next_label {
+    font-weight: normal;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+.points_input, .number_next_input {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+#add_action_btn {
+    margin-top: 5px;
+}
+#finalize-btn {
+    margin: 20px 10px;
+    padding: 10px 20px;
+    float: right;
+}
+.trash_icon {
+    cursor: pointer;
+}
+
 
 
 

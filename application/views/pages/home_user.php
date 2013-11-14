@@ -9,7 +9,7 @@
                 Encounter a problem ? Don't go crazy and tell us about it ! <br />
                 We'll do our best fixing things as quickly as we can and finalize the darn thing soon ;).
             </p>
-            <p>   The RPG Maker crew.</p>
+            <p>The RPG Maker crew.</p>
         </div>
     </div>
 </div>

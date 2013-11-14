@@ -73,7 +73,5 @@ $route['rpg_creation/(:any)'] = 'rpg_creation/view/$1';
 $route['rpg_creation'] = 'rpg_creation/view';
 $route['rpg_creation/(:any)'] = 'rpg_creation/view/$1';
 
-
-
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

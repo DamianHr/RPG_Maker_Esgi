@@ -18,9 +18,9 @@ class Rpg_Creation extends CI_Controller {
         if(!file_exists('application/views/pages/'.$page.'.php'))
             show_404();
 
-        $data['title'] = 'Rpg Creation';
-
         $this->load->helper('url');
+
+        $data['title'] = 'Rpg Creation';
 
         $this->load->view('templates/header_user', $data);
         $this->load->view('pages/'.$page, $data);

@@ -21,4 +21,11 @@ class Sign_Out extends CI_Controller {
         $this->session->unset_userdata('nickname');
         $this->session->unset_userdata('session_id');
     }
+
+
+
+    function __construct()
+    {
+        parent::__construct();
+    }
 }

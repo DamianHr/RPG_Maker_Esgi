@@ -9,6 +9,13 @@
 
 class Rpg_Creation extends CI_Controller {
 
+
+    function __construct()
+    {
+        parent::__construct();
+    }
+
+
     /**
      * Main function
      * Called be the router

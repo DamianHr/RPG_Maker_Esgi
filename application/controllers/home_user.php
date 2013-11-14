@@ -13,12 +13,19 @@ class Home_User extends CI_Controller {
      * Called be the router
      * @param string $page
      */
+
+    function __construct()
+    {
+        parent::__construct();
+    }
+
+
     public function view($page = 'home_user') {
         if(!file_exists('application/views/pages/'.$page.'.php'))
             show_404();
 
-        $this->load->library('XmlInterfacer');
-        $this->load->library('session');
+//        $this->load->library('XmlInterfacer');
+//        $this->load->library('session');
 
         $this->load->helper('url');
 
@@ -31,9 +38,15 @@ class Home_User extends CI_Controller {
         $username = $this->session->userdata('nickname');
         $data['nickname'] =  isset($username) ? $username : 'user';
 
+        $data['create'] = $this->is_change_allowed("create");
+        $data['list'] = $this->is_change_allowed("list");
+        $data['home_user'] = $this->is_change_allowed("home_user");
+
         $this->load->view('templates/header_user', $data);
         $this->load->view('pages/'.$page, $data);
         $this->load->view('templates/footer_user', $data);
+
+
     }
 
     /**
@@ -75,5 +88,6 @@ class Home_User extends CI_Controller {
             'logged_in' => TRUE
         );
         $this->session->set_userdata($newdata);
+
     }
 }

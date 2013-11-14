@@ -19,7 +19,7 @@ class Subscription extends CI_Controller {
         if(!file_exists('application/views/pages/'.$page.'.php'))
             show_404();
 
-        $this->load->library('XmlInterfacer');
+//        $this->load->library('XmlInterfacer');
         $this->load->library('session');
 
         $this->load->helper('url');
@@ -33,6 +33,12 @@ class Subscription extends CI_Controller {
         $this->load->view('templates/header', $data);
         $this->load->view('pages/'.$page, $data);
         $this->load->view('templates/footer', $data);
+    }
+
+
+    function __construct()
+    {
+        parent::__construct();
     }
 
     /**

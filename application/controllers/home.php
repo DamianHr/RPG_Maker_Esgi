@@ -14,6 +14,12 @@ class Home extends CI_Controller {
      * Called be the router
      * @param string $page
      */
+
+    function __construct()
+    {
+        parent::__construct();
+    }
+
     public function view($page = 'home') {
         if(!file_exists('application/views/pages/'.$page.'.php'))
             show_404();

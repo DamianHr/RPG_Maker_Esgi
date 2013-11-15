@@ -49,8 +49,6 @@
         <xs:sequence>
             <!--If only one answer is available there's no use to prompt the user...-->
             <xs:element type="answerType" name="answer" maxOccurs="unbounded" minOccurs="2"/>
-                <!--TODO make answer@code unique within answerpools + use key/keyref to check if it goes somewhere !-->
-
         </xs:sequence>
     </xs:complexType>
 
@@ -65,9 +63,9 @@
     <xs:complexType name="answerType">
         <xs:simpleContent>
             <xs:extension base="xs:string">
-                <xs:attribute type="xs:string" name="code" use="required"/>
-                <xs:attribute type="xs:string" name="value" use="required"/>
-                <xs:attribute type="xs:string" name="goTo" use="required"/>
+                <!-- has no use whatsoever <xs:attribute type="xs:integer" name="code" use="required"/>-->
+                <xs:attribute type="xs:integer" name="value" use="required"/>
+                <xs:attribute type="xs:integer" name="goTo" use="required"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>

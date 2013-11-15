@@ -42,6 +42,15 @@ class UserXml
 
         return $user ? $user[0] : false;
     }
+
+    public static function search_users_by_login($login)
+    {
+        $file = simplexml_load_file(self::userDb);
+
+        $users = $file->xpath("//user/nickname[contains(text(),'$login')]/..");
+
+        return $users ? $users : false;
+    }
 }
 
 class GameXml
@@ -120,6 +129,7 @@ class GameXml
             $metaAuthor->addChild('id', $author->id);
 
             $meta->addChild('creationDate', $game->creationDate);
+            $meta->addChild('summary', $game->summary);
 
 //            $answer->addChild('game', $gameFile->asXML());
             XMLUtils::xml_adopt($answer,$gameFile);
@@ -131,6 +141,42 @@ class GameXml
         return $list;
 
     }
+
+
+//    public static function search_games_by_users($list_id)
+//    {
+//        $file = simplexml_load_file(self::gameDb);
+//
+//        $xPath_req = "//game[contains(userId, '$list_id[0]')";
+//
+//        for ($i = 1; $i < count($list_id); $i++) {
+//            $xPath_req .= " or contains(userId, '$list_id[$i]')";
+//        }
+//
+//        $xPath_req .= "]";
+//
+//        $games = $file->xpath($xPath_req);
+//
+//        if (!$games)
+//            return false;
+//
+//        return $games;
+//    }
+
+//    public static function get_game_all_infos_by_id($list_files_game)
+//    {
+//        foreach ($list_files_game as $userId => $file_game) {
+//            foreach ($file_game as $file_game_by_user) {
+//                $gameFile = simplexml_load_file(self::gameFilesDirectory . "/$file_game_by_user");
+//
+//                $xPath_req = "//game";
+//
+//                $list_game_infos[$userId][] = $gameFile;
+//            }
+//        }
+//
+//        return isset($list_game_infos) ? $list_game_infos : false;
+//    }
 
 
     /**

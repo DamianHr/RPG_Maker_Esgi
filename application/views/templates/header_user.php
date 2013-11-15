@@ -28,8 +28,8 @@
 
     <script src="<?php echo base_url() ?>js/vendor/modernizr-2.6.2.min.js"></script>
     <script src="<?php echo base_url() ?>js/main.js"></script>
-    <script src="<?php echo base_url()?>js/class.js"></script>
-    <script src="<?php echo base_url()?>js/XMLPooper.js"></script>
+    <script src="<?php echo base_url() ?>js/class.js"></script>
+    <script src="<?php echo base_url() ?>js/XMLPooper.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="<?php echo base_url()?>js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
 </head>
@@ -48,12 +48,9 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="<?php echo site_url("home_user"); ?>">Home</a></li>
-                <?php if (true) { ?>
                 <li><a href="<?php echo site_url("create"); ?>">Create a game</a></li>
-                <?php } ?>
-                <?php if (true) { ?>
-                    <li><a href="<?php  echo site_url("list"); ?>">Game list</a></li>
-                <?php } ?>
+                <li><a href="<?php echo site_url("list"); ?>">Game list</a></li>
+                <li><a href="<?php echo site_url("search"); ?>">Search</a></li>
             </ul>
             <div class="navbar-right" style="padding: 10px 15px;">
                 <a class="btn btn-danger" href="<?php echo site_url("signout"); ?>">Sign out</a>

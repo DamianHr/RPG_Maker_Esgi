@@ -21,6 +21,7 @@
             <xs:element name="id" type="xs:long"/>
             <xs:element name="userId" type="xs:long"/>
             <xs:element name="creationDate" type="xs:date"/>
+            <xs:element type="xs:string" name="summary" minOccurs="0"/>
             <xs:element name="path" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>

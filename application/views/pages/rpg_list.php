@@ -11,13 +11,13 @@
         .situation label {
             width: 100%;
             text-align: center;
-            background: linear-gradient(to bottom, #428BCA 0%, #3071A9 100%) repeat-x;
-            border: 1px solid #2D6CA2;
+            background: linear-gradient(to bottom, #cfcfcf 0%, #d0d0d0 100%) repeat-x;
+            border: 1px solid #c0c0c0;
         }
 
         .situation li {
             list-style: none;
-            background-color: #dadbff;
+            background-color: #e6eaff;
         }
 
         .content {

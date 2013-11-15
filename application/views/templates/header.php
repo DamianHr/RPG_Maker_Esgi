@@ -48,6 +48,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="<?php echo site_url("home");?>">Home</a></li>
                 <li><a href="<?php echo site_url("about");?>">About</a></li>
+                <li><a href="<?php echo site_url("search");?>">Search</a></li>
             </ul>
             <div class="navbar-right">
                 <form class="navbar-form" action="<?php echo site_url("home_user");?>" method="post" style="display:inline-block">

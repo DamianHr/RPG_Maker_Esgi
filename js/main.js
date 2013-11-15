@@ -75,9 +75,10 @@ function XMLWizard() {
         listElement.append(description);
         listElement.append($("<br />"));
 
-        XMLWizard.prototype.createQuestionButton(listElement);
+        var formSituation = new FormSituation(id, description, null);
+        XMLWizard.prototype.createQuestionButton(listElement, formSituation);
 
-        situations.push(new FormSituation(id, description, null));
+        situations.push(formSituation);
     };
 
     XMLWizard.prototype.createSituationButton = function (form_id) {
@@ -96,11 +97,11 @@ function XMLWizard() {
         form.parent().append(div);
     };
 
-    XMLWizard.prototype.createQuestionButton = function (situation) {
+    XMLWizard.prototype.createQuestionButton = function (situation, formSituation) {
         var div = $("<div/>", {  class:'bnt_question' });
         var button = $("<a/>",
             {   click: function () {
-                XMLWizard.prototype.createQuestionSection(situation, this);
+                formSituation.question = XMLWizard.prototype.createQuestionSection(situation, this);
                 this.parentElement.style.display = "none";
             },
                 value: 'Add a question',
@@ -117,7 +118,6 @@ function XMLWizard() {
             {   class: 'div_question' }
         );
         situation.append(questionElement);
-
         questionElement.append($("<img>",
             {   click: function () {
                 questionElement.remove();
@@ -127,7 +127,6 @@ function XMLWizard() {
                 src:"../img/trash.png",
                 class:'trash_icon' }
         ));
-
         questionElement.append($("<label>",
             {   text: 'Question'   }
         ));
@@ -142,8 +141,8 @@ function XMLWizard() {
             {   class: 'list_answer' }
         ));
         var answers = [];
-        situation.question = new FormQuestion(labelQuestion, answers);
-
+        var question = new FormQuestion(labelQuestion, answers);
+        situation.question = question;
         // add 2 question by default
         answers.push(XMLWizard.prototype.createAnswerSection(situation));
         situation.question.setAnswers(answers);
@@ -151,6 +150,7 @@ function XMLWizard() {
         situation.question.setAnswers(answers);
 
         questionElement.append(XMLWizard.prototype.createAnswerButton(situation));
+        return question;
     };
 
     XMLWizard.prototype.createAnswerButton = function (situation) {
@@ -172,7 +172,6 @@ function XMLWizard() {
         var listElement = $('#'+situation[0].id+' .list_answer');
         var answerElement = $('<li></li>');
         listElement.append(answerElement);
-
         answerElement.append($("<img>",
             {   click: function () {
                 if(listElement[0].childNodes.length > 2) {
@@ -204,7 +203,9 @@ function XMLWizard() {
         ));
         var pointAnswer = $("<input/>",
             {   class:'points_input up_down_input',
-                type: 'number'  }
+                type: 'number',
+                min: 1,
+                value: 1   }
         );
         answerElement.append(pointAnswer);
 
@@ -215,7 +216,9 @@ function XMLWizard() {
         ));
         var codeGotoAnswer = $("<input/>",
             {   class:'number_next_input up_down_input',
-                type: 'number'  }
+                type: 'number',
+                min: 0,
+                value: 0   }
         );
         answerElement.append(codeGotoAnswer);
         return new FormAnswer(id,  labelanswer, pointAnswer, codeGotoAnswer);
@@ -235,12 +238,10 @@ function XMLWizard() {
             var i = 0; for(var a in answers) {  if(i < answers[a]) { i = answers[a];   } }
             return i;
         };
-
         FormQuestion.prototype.getAnswerIndexById = function(id) {
             for(var i = 0; i <answers.length;i++) {  if(id < answers[i].id) {  return i; } }
             return -1;
         };
-
         FormQuestion.prototype.setAnswers = function(a) {  answers = a; };
     }
 
@@ -251,12 +252,12 @@ function XMLWizard() {
             var situation = new Situation(s.id, s.description[0].value);
             game.addSituation(situation);
             if(s.question==null) continue;
-            var question = new Question(s.question.value);
+            var question = new Question(s.question.label[0].value);
             situation.setQuestion(question);
 
             for(var a in s.question.answers) {
                 a = s.question.answers[a];
-                var answer = new Answer(a.label.value,  a.pointAnswer.value,  a.codeGotoAnswer.value);
+                var answer = new Answer(a.point_answer[0].value, a.code_goto_answer[0].value, a.label[0].value );
                 question.addAnswer(answer);
             }
         }

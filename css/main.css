@@ -14,7 +14,7 @@ ul, li {
     margin: 20px 0;
 }
 #list_container li {
-    padding: 10px;
+    padding: 8px 10px 0 10px;
 }
 #list_container > li:nth-child(odd) {
     background-color: #e0e0e0;
@@ -34,7 +34,10 @@ ul, li {
     width: 100%;
 }
 .bnt_question {
-    padding-top: 10px;
+    padding: 10px 0;
+}
+.button_answer {
+    padding: 10px 0;
 }
 .points_label, .number_next_label {
     font-weight: normal;

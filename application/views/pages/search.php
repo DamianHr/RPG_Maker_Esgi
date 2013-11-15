@@ -9,7 +9,6 @@
             border: 1px solid silver;
             margin-top: 3%;
         }
-
         .main_wrapper {
             font-size: 17px;
         }

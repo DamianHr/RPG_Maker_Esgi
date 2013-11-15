@@ -67,7 +67,7 @@ Question.prototype.removeAnswerByRef = function (answer) {
  *  Below answer class
  */
 
-function Answer(code, value, goto, text) {
+function Answer(value, goto, text) {
 //    this.code = code;
     this.value = value;
     this.goto = goto;

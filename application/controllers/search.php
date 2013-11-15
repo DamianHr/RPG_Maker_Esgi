@@ -46,9 +46,15 @@ class Search extends CI_Controller
 
         $data['list_infos_users'] = $list_game_by_user;
 
-        $this->load->view('templates/header', $data);
+        $is_connected = $this->session->userdata('nickname');
+        //var_dump($is_connected);
+        //exit;
+        if($is_connected)  $this->load->view('templates/header_user', $data);
+        else $this->load->view('templates/header', $data);
         $this->load->view('pages/' . $page, $data);
-        $this->load->view('templates/footer', $data);
+        if($is_connected)$this->load->view('templates/footer_user', $data);
+        else $this->load->view('templates/footer', $data);
+
     }
 
     public function search_users($login = "")

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<game xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="../../schemas/gameFile.xsd">
+
+    <title>other Game</title>
+    <situation code="0">
+        <exposition>You're in some place somewhere</exposition>
+        <question label="You don't look around, cause you're blind as fuck.">
+            <answerpool>
+                <answer code="0" value="0" goTo="0">You decide to stay here</answer>
+                <answer code="1" value="-1" goTo="1">You take one step ahead</answer>
+            </answerpool>
+        </question>
+    </situation>
+    <situation code="1">
+        <exposition>You bat-eyed basterd has make a bad decision, you happened to be on the edge of a cliff. Poor thing,
+            you're dead
+        </exposition>
+    </situation>
+    <situation code="2">
+        <exposition>You're in some place somewhere</exposition>
+        <question label="You don't look around, cause you're blind as fuck.">
+            <answerpool>
+                <answer code="3" value="0" goTo="0">You decide to stay here</answer>
+                <answer code="4" value="-1" goTo="1">You take one step ahead</answer>
+            </answerpool>
+        </question>
+    </situation>
+</game>

@@ -8,6 +8,8 @@
         <id>0</id>
         <userId>0</userId>
         <creationDate>2013-07-01</creationDate>
+        <summary>Ceci est le résumé de myFirstGame ! Ceci est le résumé de myFirstGame ! Ceci est le résumé de myFirstGame !
+            Ceci est le résumé de myFirstGame ! Ceci est le résumé de myFirstGame ! Ceci est le résumé de myFirstGame !</summary>
         <path>myFirstGame.xml</path>
     </game>
     <game>
@@ -15,6 +17,12 @@
         <userId>0</userId>
         <creationDate>2013-07-01</creationDate>
         <path>mySecondGame.xml</path>
+    </game>
+    <game>
+        <id>2</id>
+        <userId>1</userId>
+        <creationDate>2013-08-01</creationDate>
+        <path>otherGame.xml</path>
     </game>
 
 </games>

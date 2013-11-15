@@ -11,8 +11,32 @@
         <email>admin@admin.fr</email>
     </user>
     <user>
+        <id>1</id>
+        <nickname>adm</nickname>
+        <passWord>21232f297a57a5a743894a0e4a801fc3</passWord>
+        <creationDate>2013-11-01</creationDate>
+        <lastConnexion>2013-11-01</lastConnexion>
+        <email>admin@admin.fr</email>
+    </user>
+    <user>
         <id>11</id>
         <nickname>toto</nickname>
+        <passWord>f71dbe52628a3f83a77ab494817525c6</passWord>
+        <creationDate>2013-11-11</creationDate>
+        <lastConnexion>2013-11-01</lastConnexion>
+        <email>dada@gmail.com</email>
+    </user>
+    <user>
+        <id>12</id>
+        <nickname>totiti</nickname>
+        <passWord>f71dbe52628a3f83a77ab494817525c6</passWord>
+        <creationDate>2013-11-11</creationDate>
+        <lastConnexion>2013-11-01</lastConnexion>
+        <email>dada@gmail.com</email>
+    </user>
+    <user>
+        <id>13</id>
+        <nickname>toti</nickname>
         <passWord>f71dbe52628a3f83a77ab494817525c6</passWord>
         <creationDate>2013-11-11</creationDate>
         <lastConnexion>2013-11-01</lastConnexion>

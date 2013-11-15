@@ -52,6 +52,7 @@
                 <?php if (IceBreaker::is_change_allowed(site_url("list"))) { ?>
                     <li><a href="<?php if (IceBreaker::is_change_allowed(site_url("list"))) { echo site_url("list"); } ?>">Game list</a></li>
                 <?php } ?>
+                <li><a href="<?php echo site_url("search");?>">Search</a></li>
             </ul>
             <div class="navbar-right" style="padding: 10px 15px;">
                 <a class="btn btn-danger" href="<?php echo site_url("signout"); ?>">Sign out</a>

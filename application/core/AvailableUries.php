@@ -30,6 +30,7 @@ class AvailableUries
     const creation = 'creation'; //(creation = rpg_creation/view
 //const creation = 'creation'; //(creation/(:any) = rpg_creation/view/$1
     const rpg_creation = 'rpg_creation'; //(rpg_creation = rpg_creation/view
+    const search = 'search'; //(search = search/view
 //const rpg_creation = 'rpg_creation'; //(rpg_creation/(:any) = rpg_creation/view/$1
 //const rpg_creation = 'rpg_creation'; //(rpg_creation = rpg_creation/view
 //const rpg_creation = 'rpg_creation'; //(rpg_creation/(:any) = rpg_creation/view/$1

@@ -6,8 +6,10 @@
         <id>0</id>
         <userId>0</userId>
         <creationDate>2013-07-01</creationDate>
-        <summary>Ceci est le résumé de myFirstGame ! Ceci est le résumé de myFirstGame ! Ceci est le résumé de myFirstGame !
-            Ceci est le résumé de myFirstGame ! Ceci est le résumé de myFirstGame ! Ceci est le résumé de myFirstGame !</summary>
+        <summary>Ceci est le résumé de myFirstGame ! Ceci est le résumé de myFirstGame ! Ceci est le résumé de
+            myFirstGame !
+            Ceci est le résumé de myFirstGame ! Ceci est le résumé de myFirstGame ! Ceci est le résumé de myFirstGame !
+        </summary>
         <path>myFirstGame.xml</path>
     </game>
     <game>
@@ -22,5 +24,4 @@
         <creationDate>2013-08-01</creationDate>
         <path>otherGame.xml</path>
     </game>
-
-<game><id>3</id><userId>0</userId><creationDate>2013-11-15</creationDate><path>3.xml</path></game><game><id>4</id><userId>0</userId><creationDate>2013-11-15</creationDate><path>4.xml</path></game><game><id>5</id><userId>0</userId><creationDate>2013-11-15</creationDate><path>5.xml</path></game><game><id>6</id><userId>0</userId><creationDate>2013-11-15</creationDate><path>6.xml</path></game></games>
+</games>

@@ -21,14 +21,14 @@
         hr {
             border-top: 1px solid #c0c0c0;
             margin-right: 10%;
-            margin-left: 4%;
+            margin-left: 9%;
         }
 
         .author {
             font-weight: bold;
             font-size: 22px;
             font-variant: small-caps;
-            /*background-color: #c0c0c0;*/
+            margin-left: 3%;
         }
 
         .game {
@@ -36,16 +36,18 @@
             font-size: 20px;
             text-decoration: underline;
             font-weight: bold;
+            margin-left: 5%;
         }
 
         .all_games {
             background-color: #d8d8d8;
             border-left: 5px solid #000000;
             margin-right: 5%;
+            margin-left: 5%;
         }
 
         .summary {
-            margin-left: 2%;
+            margin-left: 7%;
             font-style: oblique;
         }
     </style>

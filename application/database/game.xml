@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
-
 <!--Users database-->
-<games xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="../schemas/table_game.xsd">
+<games xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../schemas/table_game.xsd">
 
     <game>
         <id>0</id>
@@ -17,4 +15,4 @@
         <path>mySecondGame.xml</path>
     </game>
 
-</games>
+<game><id>3</id><userId>0</userId><creationDate>2013-11-15</creationDate><path>3.xml</path></game><game><id>4</id><userId>0</userId><creationDate>2013-11-15</creationDate><path>4.xml</path></game><game><id>5</id><userId>0</userId><creationDate>2013-11-15</creationDate><path>5.xml</path></game><game><id>6</id><userId>0</userId><creationDate>2013-11-15</creationDate><path>6.xml</path></game></games>

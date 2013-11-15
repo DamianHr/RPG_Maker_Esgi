@@ -25,7 +25,16 @@ class Rpg_Creation extends CI_Controller {
         if(!file_exists('application/views/pages/'.$page.'.php'))
             show_404();
 
+
         $this->load->helper('url');
+
+        if(isset($_POST['xml'])) {
+            var_dump($_POST['xml']);exit;
+            $user_id = $this->session->userdata('id');
+
+            GameXml::create_game($user_id, $_POST['xml']);
+            redirect(site_url('rpg_list'));
+        }
 
         $data['title'] = 'Rpg Creation';
 

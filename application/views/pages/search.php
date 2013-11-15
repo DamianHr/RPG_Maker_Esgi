@@ -12,7 +12,6 @@
         .main_wrapper {
             font-size: 17px;
         }
-
         #list_users ul {
             list-style-type: none;
         }

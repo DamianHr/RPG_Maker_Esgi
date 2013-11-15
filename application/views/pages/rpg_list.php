@@ -62,7 +62,7 @@
                         foreach ($game->game->situation as $situation) {
                             echo "<ul> <!-- FormSituation -->
                                 <li>
-                                    <label class='situation'>FormSituation " . $situation['code'] . "</label>
+                                    <label class='situation'>Situation #" . $situation['code'] . "</label>
                                     <div class='content'>
                                     <table >
                                         <tr> <!-- Exposition -->
@@ -73,7 +73,7 @@
                                 echo "
                                         <tr> <!-- QUESTION -->
                                             <td>Question :</td>
-                                            <td>" . $situation->question['label'] . "</td>
+                                            <td style='font-weight: bold;'>" . $situation->question['label'] . "</td>
                                         </tr>";
                             if (isset($situation->question->answerpool->answer)) {
                                 echo "
@@ -83,7 +83,7 @@
                                                 <ul>";
                                 foreach ($situation->question->answerpool->answer as $answer) {
                                     echo "              <li>
-                                                        " . @$answer . "
+                                                        - (send to #" .$answer['goTo'].") ". @$answer ."
                                                     </li>";
                                 }
                                 echo "                  </ul>

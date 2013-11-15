@@ -175,7 +175,7 @@ function XMLWizard() {
 
         answerElement.append($("<img>",
             {   click: function () {
-                if(listElement[0].childNodes.length > 1) {
+                if(listElement[0].childNodes.length > 2) {
                     answerElement.remove();
                     var index = situation.question.getLastAnswerId();
                     if(index > 0) situation.question.answers.splice(index, 1);
@@ -256,7 +256,7 @@ function XMLWizard() {
 
             for(var a in s.question.answers) {
                 a = s.question.answers[a];
-                var answer = new Answer(a.id, a.label.value,  a.pointAnswer.value,  a.codeGotoAnswer.value);
+                var answer = new Answer(a.label.value,  a.pointAnswer.value,  a.codeGotoAnswer.value);
                 question.addAnswer(answer);
             }
         }
@@ -267,8 +267,3 @@ function XMLWizard() {
         form[0].submit();
     }
 }
-
-
-
-
-

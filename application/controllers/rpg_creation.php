@@ -29,7 +29,8 @@ class Rpg_Creation extends CI_Controller {
         $this->load->helper('url');
 
         if(isset($_POST['xml'])) {
-            var_dump($_POST['xml']);exit;
+            //var_dump($_POST['xml']);
+            //exit;
             $user_id = $this->session->userdata('id');
 
             GameXml::create_game($user_id, $_POST['xml']);

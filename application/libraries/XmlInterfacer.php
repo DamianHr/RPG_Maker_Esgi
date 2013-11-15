@@ -153,10 +153,11 @@ class GameXml
 
 //        $gameFile = new SimpleXMLElement(self::gameFileHeader . $xml_Game->asXml());
 
-        $gameFile = simplexml_load_string(self::gameFileHeader.$xml_Game);
+        //$gameFile = simplexml_load_string(self::gameFileHeader.$xml_Game);
+        $gameFile = simplexml_load_string($xml_Game);
 
 
-        $gameFile->saveXML(self::gameFilesDirectory . $name);
+        $gameFile->saveXML(self::gameFilesDirectory . '/' . $name);
     }
 }
 

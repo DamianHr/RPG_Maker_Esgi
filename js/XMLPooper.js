@@ -19,20 +19,20 @@ function XmlizeGame(game){
 
 }
 
-//function test(){
-//    var g = new Game("story one");
-//    var sit = new Situation("0","you're somewhere");
-//    var que = new Question("WHat ?");
-//    que.addAnswer(new Answer(0, 0,0, "Cause"));
-//    g.addSituation(sit);
-//    g.addSituation(sit);
-//    g.addSituation(sit);
-//    g.addSituation(sit);
-//    sit.setQuestion(que);
-//
-//    alert(XMLPooper(g));
-//
-//}
+function test(){
+    var g = new Game("story one");
+    var sit = new Situation("0","you're somewhere");
+    var que = new Question("WHat ?");
+    que.addAnswer(new Answer(0,0, "Cause"));
+    g.addSituation(sit);
+    g.addSituation(sit);
+    g.addSituation(sit);
+    g.addSituation(sit);
+    sit.setQuestion(que);
+
+    alert(XMLPooper(g));
+
+}
 
 function XmlizeSituation(situ, doc){
 

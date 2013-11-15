@@ -35,31 +35,32 @@
 </div>
 <div class="container">
     <!-- Example row of columns -->
-    <div class="row">
+    <div class="row" >
+
+        <?php if ($create) { ?>
         <div class="col-lg-4">
             <h2>Create</h2>
 
             <p>Where all thing begin, let's create YOUR game !
             </p>
-            <?php if (IceBreaker::is_change_allowed(site_url("creater"))) { ?>
-                <p><a class="btn btn-primary btn-lg" href="<?php if (!IceBreaker::is_change_allowed(site_url("creater"))) { echo site_url("create"); } ?>">Create &raquo;</a></p>
-            <?php } ?>
+                <p><a class="btn btn-primary btn-lg" href="<?php  echo site_url("create"); ?>" >Create &raquo;</a></p>
         </div>
-        <div class="col-lg-4">
+        <?php } ?>
+        <?php if ($list) { ?>
+            <div class="col-lg-4">
             <h2>Manage</h2>
 
             <p>See and manage the games that you have created !</p>
-            <?php if (IceBreaker::is_change_allowed(site_url("list"))) { ?>
-            <p><a class="btn btn-primary btn-lg" href="<?php if (IceBreaker::is_change_allowed(site_url("list"))) { echo site_url("list"); } ?>">Manage &raquo;</a></p>
-            <?php } ?>
+            <p><a class="btn btn-primary btn-lg" href="<?php echo site_url("list");  ?>">Manage &raquo;</a></p>
         </div>
-        <div class="col-lg-4">
+        <?php } ?>
+        <?php if ($home_user) { ?>
+            <div class="col-lg-4">
             <h2>Play</h2>
 
             <p>Wanna play a little game ? Let's see what the community has for you !</p>
-            <?php if (IceBreaker::is_change_allowed(site_url("home_user"))) { ?>
-            <p><a class="btn btn-primary btn-lg" href="<?php if (IceBreaker::is_change_allowed(site_url("home_user"))) { echo site_url("home_user"); } ?>">Play &raquo;</a></p>
-            <?php } ?>
+            <p><a class="btn btn-primary btn-lg" href="<?php  echo site_url("home_user"); ?>">Play &raquo;</a></p>
         </div>
+        <?php } ?>
     </div>
 </div>

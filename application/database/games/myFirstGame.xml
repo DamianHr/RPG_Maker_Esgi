@@ -7,8 +7,9 @@
         <exposition>You're in some place somewhere</exposition>
         <question label="You don't look around, cause you're blind as fuck.">
             <answerpool>
-                <answer code="0" value="0" goTo="0">You decide to stay here</answer>
-                <answer code="1" value="-1" goTo="1">You take one step ahead</answer>
+                <answer  value="0" goTo="0">You decide to stay here</answer>
+                <answer  value="-1" goTo="1">You take one step ahead</answer>
+                <answer  value="0" goTo="2">You extend your arms and search for a wall</answer>
             </answerpool>
         </question>
     </situation>
@@ -18,11 +19,11 @@
         </exposition>
     </situation>
     <situation code="2">
-        <exposition>You're in some place somewhere</exposition>
-        <question label="You don't look around, cause you're blind as fuck.">
+        <exposition>There's... Nothing, at least not within arm reached. Or is there ? Do you have arms in the first place ?</exposition>
+        <question label="Damn it ! Do you have arms ? DO YOU ?">
             <answerpool>
-                <answer code="3" value="0" goTo="0">You decide to stay here</answer>
-                <answer code="4" value="-1" goTo="1">You take one step ahead</answer>
+                <answer  value="0" goTo="1">You don't know, and it scares you. Really does... you're going full retard and start running around.</answer>
+                <answer  value="0" goTo="0">Mah ? Why would you care ?</answer>
             </answerpool>
         </question>
     </situation>

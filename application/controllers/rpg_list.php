@@ -18,8 +18,8 @@ class Rpg_List extends CI_Controller {
         if(!file_exists('application/views/pages/'.$page.'.php'))
             show_404();
 
-        $this->load->library('XmlInterfacer');
-        $this->load->library('session');
+//        $this->load->library('XmlInterfacer');
+//        $this->load->library('session');
 
         $this->load->helper('url');
 
@@ -31,5 +31,11 @@ class Rpg_List extends CI_Controller {
         $this->load->view('templates/header_user', $data);
         $this->load->view('pages/'.$page, $data);
         $this->load->view('templates/footer_user', $data);
+    }
+
+
+    function __construct()
+    {
+        parent::__construct();
     }
 }

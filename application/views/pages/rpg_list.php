@@ -60,9 +60,9 @@
                         $class = $is_first ? 'active' : '';
                         echo "<div class='situation tab-pane fade in  " . $class . "' id='" . ((string)$game->meta->id) . "'>";
                         foreach ($game->game->situation as $situation) {
-                            echo "<ul> <!-- Situation -->
+                            echo "<ul> <!-- FormSituation -->
                                 <li>
-                                    <label class='situation'>Situation " . $situation['code'] . "</label>
+                                    <label class='situation'>FormSituation " . $situation['code'] . "</label>
                                     <div class='content'>
                                     <table >
                                         <tr> <!-- Exposition -->

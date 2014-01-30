@@ -76,6 +76,12 @@ $route['rpg_creation/(:any)'] = 'rpg_creation/view/$1';
 $route['search'] = 'search/view';
 $route['search/(:any)'] = 'search/view/$1';
 
+$route['service_login'] = 'service_login/view';
+$route['service_login/(:any)'] = 'service_login/view/$1';
+
+$route['service_game'] = 'service_game/view';
+$route['service_game/(:any)'] = 'service_game/view/$1';
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

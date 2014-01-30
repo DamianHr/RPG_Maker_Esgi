@@ -74,6 +74,22 @@ class GameXml
         return false;
     }
 
+    public static function  get_Game_XML_By_Id($id)
+    {
+        $file = simplexml_load_file(self::gameDb);
+
+        $game = $file->xpath("/games/game[id=$id]");
+        $game = $game ? $game[0] : false;
+
+        if ($game) {
+
+            $gameFile = simplexml_load_file(GameXml::gameFilesDirectory."/".$game->path);
+            return $gameFile;
+        }
+
+        return false;
+    }
+
     public static function get_game_meta($id){
         $file = simplexml_load_file(self::gameDb);
 
@@ -120,8 +136,7 @@ class GameXml
             $author = UserXml::get_User_By($game->userId);
 
             $answer = $list->addChild('game');
-
-            $meta =     $answer->addChild('meta');
+            $meta = $answer->addChild('meta');
 
             $meta->addChild('id', $game->id);
             $metaAuthor = $meta->addChild('author');
@@ -131,15 +146,37 @@ class GameXml
             $meta->addChild('creationDate', $game->creationDate);
             $meta->addChild('summary', $game->summary);
 
-//            $answer->addChild('game', $gameFile->asXML());
             XMLUtils::xml_adopt($answer,$gameFile);
 
-//            var_dump($answer);
-//            exit;
         }
 
         return $list;
 
+    }
+
+    public static function get_Game_XML_By_User_with_meta($id){
+        $file = simplexml_load_file(self::gameDb);
+
+        $games = $file->xpath("/games/game[userId=$id]");
+
+        if (!$games)
+            return false;
+
+        $list = new SimpleXMLElement('<games></games>');
+        foreach ($games as $game) {
+
+            $gameFile = simplexml_load_file(self::gameFilesDirectory . "/$game->path");
+
+            $answer = $list->addChild('game');
+            $meta = $answer->addChild('meta');
+
+            $meta->addChild('id', $game->id);
+
+            XMLUtils::xml_adopt($answer,$gameFile);
+
+        }
+        //var_dump($file);exit;
+        return $list;
     }
 
 

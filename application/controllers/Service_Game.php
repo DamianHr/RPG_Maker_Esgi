@@ -19,14 +19,13 @@ class Service_Game extends CI_Controller {
 
         $this->load->helper('url');
 
+
         if($this->authentify()) {
-            $user_id = $this->session->userdata('id');
-            $data['user_id'] = $user_id;
+
             $data['game'] = GameXml::get_Game_XML_By_Id($this->session->userdata('game'));
         }else {
-            $data['game'] = array();
+            $data['game'] = null;
         }
-
         $this->load->view('pages/'.$page, $data);
     }
 
@@ -55,7 +54,6 @@ class Service_Game extends CI_Controller {
      */
     public function verify_Ids($user_id, $game) {
         $user = UserXml::get_User_By($user_id);
-
         if (!$user) return false;
 
         $this->set_session($user, $game);
